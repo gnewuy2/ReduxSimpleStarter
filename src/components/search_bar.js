@@ -15,7 +15,7 @@ class SearchBar extends Component { // has all functionalities of the React.Comp
 	// whenever a class is instantiated.
 	constructor(props){
 		super(props); // Component is a class that has its own constructor method
-		this.state = {term: ''};
+		this.state = {term: 'Starting Value'};
 	}
 
 
@@ -35,9 +35,14 @@ class SearchBar extends Component { // has all functionalities of the React.Comp
 
 		// show the state alongside setting the state:
 		// use () for multiline body
+
+		// value = {this.state.term} for controlled component
+		// updated each time the below handler is triggered.
 		return (
 			<div>
-				<input onChange = {(newInput) => this.setState({term: newInput.target.value})} />; 
+				<input 
+				value = {this.state.term} 
+				onChange = {(newInput) => this.setState({term: newInput.target.value})} />; 
 				Value of the input: {this.state.term}
 			</div>
 
