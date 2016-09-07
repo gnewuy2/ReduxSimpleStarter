@@ -6,7 +6,10 @@ import VideoListItem from './video_list_item';
 // added key to VideoListItem by looking up Network tab for the search? file and locating each video is uniquely identified by etag
 const VideoList = (props) =>{
 	const videoItems = props.videos.map((video) =>{
-		return <VideoListItem key = {video.etag} video = {video} />
+		return <VideoListItem 
+		onVideoSelect = {props.onVideoSelect}
+		key = {video.etag} 
+		video = {video} />
 		}
 	)
 

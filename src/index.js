@@ -68,11 +68,18 @@ class App extends Component {
 		// this.props; // 'this' is necessary if we wanted to access props from within a class component.
 		// note the render runs regardless of whether the YTSearch has completed. so it may start with undefined. 
 		// so video_detail needs to check if YTSearch has generated results
+
+		// How do we make the VideoDetail responsive to video we select from the video list? We have to modify the <videoDetail video ...> below
+		// for it to interact with the state. Also, want the state to come through to the rendering below; so need to modify video_detail.js and constructor in index.js both.
+
+		// add a call back to the VideoList item below: so we are now passing a property called onVideoSelect to VideoList. 
 		return (
 			<div>
 			  <SearchBar />
 			  <VideoDetail video = {this.state.selectedVideo}/>
-			  <VideoList videos = {this.state.videos} /> 
+			  <VideoList 
+			  	onVideoSelect = {selectedVideo =>{this.setState({selectedVideo})}}
+			  videos = {this.state.videos} /> 
 			</div>
 			);
 	}
