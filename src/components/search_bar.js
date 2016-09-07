@@ -10,6 +10,15 @@ import React, { Component } from 'react';
 // Refactor above
 
 class SearchBar extends Component { // has all functionalities of the React.Component class
+	// initialize the state of a class
+	// constructor method is common to all js classes and is called
+	// whenever a class is instantiated.
+	constructor(props){
+		super(props); // Component is a class that has its own constructor method
+		this.state = {term: ''};
+	}
+
+
 	// each class must have a render() method
 	render() {
 		// must return some jsx
@@ -18,8 +27,24 @@ class SearchBar extends Component { // has all functionalities of the React.Comp
 		// // so whenever input is changed, the handler executes.
 
 		// refactored to enclose event handler
-		return <input onChange = {(newInput) => console.log(newInput.target.value)} />
-	}
+		// return <input onChange = {(newInput) => console.log(newInput.target.value)} />
+
+		// set the state:
+		// return <input onChange = {(newInput) => this.setState({term: newInput.target.value})}/>;
+		// must not have any ; inside the curly braces otherwise console will throw error saying some module not found
+
+		// show the state alongside setting the state:
+		// use () for multiline body
+		return (
+			<div>
+				<input onChange = {(newInput) => this.setState({term: newInput.target.value})} />; 
+				Value of the input: {this.state.term}
+			</div>
+
+			)
+
+	}	
+
 
 	// event handler
 
