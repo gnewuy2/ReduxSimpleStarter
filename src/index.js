@@ -29,7 +29,7 @@ import ReactDOM from 'react-dom' // without this we get warning: reactDom requir
 import YTSearch from 'youtube-api-search'
 
 import SearchBar from './components/search_bar' // used relative path; omit .js as long as it is .js file
-
+import VideoList from './components/video_list'
 const API_KEY = 'AIzaSyDA7unbgIu_GEI6RHL9Q08c2RWItAj5PLg';
 
 
@@ -51,17 +51,20 @@ class App extends Component {
 		// YTSearch({key: API_KEY, term: 'surfboards'}, data =>{ // the importance of using data instead of function (data)
 		// 	this.setState({ videos: data });
 		// });
-
+		// when search is complete the state is reset.
 		// does same thing as above with ES6
 		YTSearch({key: API_KEY, term: 'surfboards'}, videos => {
 			this.setState({videos}); // or do this.setState({videos:videos}); the second 'videos' omittable b/c of ES6 and name identity
 		})
 	}
 
+	// pass data from App's videos to VideoList: this is called a prop.
+	// note the necessity of {} without which error is thrown saying that ./src/index.js module could not be found
 	render() {
 		return (
 			<div>
 			  <SearchBar />
+			  <VideoList videos = {this.state.videos} /> 
 			</div>
 			);
 	}
