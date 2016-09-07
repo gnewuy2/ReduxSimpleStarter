@@ -30,6 +30,7 @@ import YTSearch from 'youtube-api-search'
 
 import SearchBar from './components/search_bar' // used relative path; omit .js as long as it is .js file
 import VideoList from './components/video_list'
+import VideoDetail from './components/video_detail'
 const API_KEY = 'AIzaSyDA7unbgIu_GEI6RHL9Q08c2RWItAj5PLg';
 
 
@@ -62,9 +63,12 @@ class App extends Component {
 	// note the necessity of {} without which error is thrown saying that ./src/index.js module could not be found
 	render() {
 		// this.props; // 'this' is necessary if we wanted to access props from within a class component.
+		// note the render runs regardless of whether the YTSearch has completed. so it may start with undefined. 
+		// so video_detail needs to check if YTSearch has generated results
 		return (
 			<div>
 			  <SearchBar />
+			  <VideoDetail video = {this.state.videos[0]}/>
 			  <VideoList videos = {this.state.videos} /> 
 			</div>
 			);
