@@ -42,3 +42,4 @@ const App = function() {
 
 ReactDOM.render(<App />, document.querySelector('.container'));
 // without the document querySelector we cannot properly display the App in the DOM
+// Now we can finally display what the app does on index.html between the container class tags.
