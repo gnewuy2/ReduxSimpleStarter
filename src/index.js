@@ -48,14 +48,17 @@ const API_KEY = 'AIzaSyDA7unbgIu_GEI6RHL9Q08c2RWItAj5PLg';
 class App extends Component {
 	constructor(props){ // pay attention: don't want misspellings
 		super(props);
-		this.state = {videos: []};
+		this.state = {videos: [],
+				selectedVideo: null
+			};
 		// YTSearch({key: API_KEY, term: 'surfboards'}, data =>{ // the importance of using data instead of function (data)
 		// 	this.setState({ videos: data });
 		// });
 		// when search is complete the state is reset.
 		// does same thing as above with ES6
 		YTSearch({key: API_KEY, term: 'surfboards'}, videos => {
-			this.setState({videos}); // or do this.setState({videos:videos}); the second 'videos' omittable b/c of ES6 and name identity
+			this.setState({videos: videos,
+							selectedVideo: videos[0]}); // or do this.setState({videos:videos}); the second 'videos' omittable b/c of ES6 and name identity
 		})
 	}
 
@@ -68,7 +71,7 @@ class App extends Component {
 		return (
 			<div>
 			  <SearchBar />
-			  <VideoDetail video = {this.state.videos[0]}/>
+			  <VideoDetail video = {this.state.selectedVideo}/>
 			  <VideoList videos = {this.state.videos} /> 
 			</div>
 			);
