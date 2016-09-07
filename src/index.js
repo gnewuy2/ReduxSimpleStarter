@@ -33,8 +33,8 @@ const App = function() {
 	//return <div>Hi</div>;
 	return (
 		<div>
-		  <SearchBar />
-		</div>)
+		  <SearchBar /> 
+		</div> // removed an extra ) which is throwing an error saying that ./src/index.js module could not be found
 	);
 }
 
