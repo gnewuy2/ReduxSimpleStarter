@@ -48,9 +48,14 @@ class App extends Component {
 	constructor(props){ // pay attention: don't want misspellings
 		super(props);
 		this.state = {videos: []};
-		YTSearch({key: API_KEY, term: 'surfboards'}, data =>{ // the importance of using data instead of function (data)
-			this.setState({ videos: data });
-		});
+		// YTSearch({key: API_KEY, term: 'surfboards'}, data =>{ // the importance of using data instead of function (data)
+		// 	this.setState({ videos: data });
+		// });
+
+		// does same thing as above with ES6
+		YTSearch({key: API_KEY, term: 'surfboards'}, videos => {
+			this.setState({videos}); // or do this.setState({videos:videos}); the second 'videos' omittable b/c of ES6 and name identity
+		})
 	}
 
 	render() {
