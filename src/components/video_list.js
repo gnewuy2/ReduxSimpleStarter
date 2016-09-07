@@ -1,12 +1,23 @@
 import React from 'react';
+import VideoListItem from './video_list_item';
 
+// note that we have to make (props) on the left hand side in order to access its values
+// what happens on the line of return <VideoListItem video = {video} /> depends on what is specified on video_list_item.js file.
 const VideoList = (props) =>{
+	const videoItems = props.videos.map((video) =>{
+		return <VideoListItem video = {video} />
+		}
+	)
+
 	// note we've already included bootstrap in index.html file
 	return (
 	  <ul className = "col-md-4 list-group">
-	  {props.videos.length}
+	 	{videoItems}
 	  </ul>
 	);
-}
+};
+
+// if modifying the VideoList from a functional component to a class component, we'll have to change it a bit:
+// {this.props.videos.length} instead of just {props.videos.length}
 
 export default VideoList;
