@@ -39,7 +39,7 @@ class SearchBar extends Component { // has all functionalities of the React.Comp
 		// value = {this.state.term} for controlled component
 		// updated each time the below handler is triggered.
 		return (
-			<div>
+			<div className = 'search-bar'>
 				<input 
 				value = {this.state.term} 
 				onChange = {(newInput) => this.setState({term: newInput.target.value})} />; 
