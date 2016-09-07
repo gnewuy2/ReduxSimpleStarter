@@ -24,18 +24,36 @@
 // Even though we've installed React in the package dependencies
 // we have to explicitly say we want React from 'react' library
 // to render them into DOM requires different library reactDom
-import React from 'react'; // without this the browser on index.html will say error: React is not defined
+import React, {Component} from 'react'; // without this the browser on index.html will say error: React is not defined
 import ReactDOM from 'react-dom' // without this we get warning: reactDom required
+import YTSearch from 'youtube-api-search'
+
 import SearchBar from './components/search_bar' // used relative path; omit .js as long as it is .js file
 
 const API_KEY = 'AIzaSyDA7unbgIu_GEI6RHL9Q08c2RWItAj5PLg';
-const App = function() {
-	//return <div>Hi</div>;
-	return (
-		<div>
-		  <SearchBar /> 
-		</div> // removed an extra ) which is throwing an error saying that ./src/index.js module could not be found
-	);
+YTSearch({key: API_KEY, term: 'surfboards'}, function (data){
+	console.log(data);
+})
+
+// const App = function() {
+// 	//return <div>Hi</div>;
+// 	return (
+// 		<div>
+// 		  <SearchBar /> 
+// 		</div> // removed an extra ) which is throwing an error saying that ./src/index.js module could not be found
+// 	);
+// }
+
+//Change const App to a class
+// each class needs a render method
+class App extends Component {
+	render() {
+		return (
+			<div>
+			  <SearchBar />
+			</div>
+			);
+	}
 }
 
 // React.render(App);
