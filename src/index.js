@@ -31,9 +31,7 @@ import YTSearch from 'youtube-api-search'
 import SearchBar from './components/search_bar' // used relative path; omit .js as long as it is .js file
 
 const API_KEY = 'AIzaSyDA7unbgIu_GEI6RHL9Q08c2RWItAj5PLg';
-YTSearch({key: API_KEY, term: 'surfboards'}, function (data){
-	console.log(data);
-})
+
 
 // const App = function() {
 // 	//return <div>Hi</div>;
@@ -47,6 +45,14 @@ YTSearch({key: API_KEY, term: 'surfboards'}, function (data){
 //Change const App to a class
 // each class needs a render method
 class App extends Component {
+	constructor(props){ // pay attention: don't want misspellings
+		super(props);
+		this.state = {videos: []};
+		YTSearch({key: API_KEY, term: 'surfboards'}, data =>{ // the importance of using data instead of function (data)
+			this.setState({ videos: data });
+		});
+	}
+
 	render() {
 		return (
 			<div>
