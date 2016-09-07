@@ -34,7 +34,9 @@ React.render(App);
 // Take this component's generated HTML and put it on the page
 // (in the DOM)
 
-ReactDom.render(App) 
+// ReactDom.render(App) 
 // ReactDom.render(): invalid component element. Instead of
 // passing a component class, make sure to instantiate it before passing it to React.createElement
 // by using <App></App> we are making an instance of the App.
+
+ReactDom.render(<App />)
