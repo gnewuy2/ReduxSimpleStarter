@@ -3,9 +3,10 @@ import VideoListItem from './video_list_item';
 
 // note that we have to make (props) on the left hand side in order to access its values
 // what happens on the line of return <VideoListItem video = {video} /> depends on what is specified on video_list_item.js file.
+// added key to VideoListItem by looking up Network tab for the search? file and locating each video is uniquely identified by etag
 const VideoList = (props) =>{
 	const videoItems = props.videos.map((video) =>{
-		return <VideoListItem video = {video} />
+		return <VideoListItem key = {video.etag} video = {video} />
 		}
 	)
 

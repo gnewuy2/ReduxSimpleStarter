@@ -61,6 +61,7 @@ class App extends Component {
 	// pass data from App's videos to VideoList: this is called a prop.
 	// note the necessity of {} without which error is thrown saying that ./src/index.js module could not be found
 	render() {
+		// this.props; // 'this' is necessary if we wanted to access props from within a class component.
 		return (
 			<div>
 			  <SearchBar />
