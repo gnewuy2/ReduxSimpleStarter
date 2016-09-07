@@ -24,13 +24,14 @@
 // Even though we've installed React in the package dependencies
 // we have to explicitly say we want React from 'react' library
 // to render them into DOM requires different library reactDom
-import ReactDOM from 'react-dom' // without this we get warning: reactDom required
 import React from 'react'; // without this the browser on index.html will say error: React is not defined
+import ReactDOM from 'react-dom' // without this we get warning: reactDom required
+
 const App = function() {
 	return <div>Hi</div>;
 }
 
-React.render(App);
+// React.render(App);
 // Take this component's generated HTML and put it on the page
 // (in the DOM)
 
@@ -39,4 +40,5 @@ React.render(App);
 // passing a component class, make sure to instantiate it before passing it to React.createElement
 // by using <App></App> we are making an instance of the App.
 
-ReactDom.render(<App />)
+ReactDOM.render(<App />, document.querySelector('.container'));
+// without the document querySelector we cannot properly display the App in the DOM
