@@ -13,16 +13,19 @@ class SearchBar extends Component { // has all functionalities of the React.Comp
 	// each class must have a render() method
 	render() {
 		// must return some jsx
-		return <input onChange = {this.onInputChange} />;
-		// reference to the event handler by this. whenever Change event happens
-		// so whenever input is changed, the handler executes.
+		// return <input onChange = {this.onInputChange} />;
+		// // reference to the event handler by this. whenever Change event happens
+		// // so whenever input is changed, the handler executes.
+
+		// refactored to enclose event handler
+		return <input onChange = {(newInput) => console.log(newInput.target.value)} />
 	}
 
 	// event handler
 
-	onInputChange(newInput) {
-		console.log(newInput.target.value);
-	}
+	// onInputChange(newInput) {
+	// 	console.log(newInput.target.value);
+	// }
 }
 
 export default SearchBar;
