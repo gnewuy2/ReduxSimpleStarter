@@ -26,9 +26,16 @@
 // to render them into DOM requires different library reactDom
 import React from 'react'; // without this the browser on index.html will say error: React is not defined
 import ReactDOM from 'react-dom' // without this we get warning: reactDom required
+import SearchBar from './components/search_bar' // used relative path; omit .js as long as it is .js file
 
+const API_KEY = 'AIzaSyDA7unbgIu_GEI6RHL9Q08c2RWItAj5PLg';
 const App = function() {
-	return <div>Hi</div>;
+	//return <div>Hi</div>;
+	return (
+		<div>
+		  <SearchBar />
+		</div>)
+	);
 }
 
 // React.render(App);
@@ -43,3 +50,4 @@ const App = function() {
 ReactDOM.render(<App />, document.querySelector('.container'));
 // without the document querySelector we cannot properly display the App in the DOM
 // Now we can finally display what the app does on index.html between the container class tags.
+
