@@ -1,4 +1,7 @@
-import React from 'react';
+// import React from 'react';
+// refactor above:
+
+import React, { Component } from 'react';
 
 // const SearchBar = () => {
 // 	return <input />;
@@ -6,7 +9,7 @@ import React from 'react';
 
 // Refactor above
 
-class SearchBar extends React.Component { // has all functionalities of the React.Component class
+class SearchBar extends Component { // has all functionalities of the React.Component class
 	// each class must have a render() method
 	render() {
 		// must return some jsx
