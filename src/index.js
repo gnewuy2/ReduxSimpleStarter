@@ -20,10 +20,11 @@
 // 	</ol>
 // }
 
-//ES6: access to modules separately. 
+// ES6: access to modules separately. 
 // Even though we've installed React in the package dependencies
 // we have to explicitly say we want React from 'react' library
-
+// to render them into DOM requires different library reactDom
+import ReactDOM from 'react-dom' // without this we get warning: reactDom required
 import React from 'react'; // without this the browser on index.html will say error: React is not defined
 const App = function() {
 	return <div>Hi</div>;
@@ -32,3 +33,8 @@ const App = function() {
 React.render(App);
 // Take this component's generated HTML and put it on the page
 // (in the DOM)
+
+ReactDom.render(App) 
+// ReactDom.render(): invalid component element. Instead of
+// passing a component class, make sure to instantiate it before passing it to React.createElement
+// by using <App></App> we are making an instance of the App.
