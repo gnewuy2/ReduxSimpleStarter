@@ -20,7 +20,11 @@
 // 	</ol>
 // }
 
+//ES6: access to modules separately. 
+// Even though we've installed React in the package dependencies
+// we have to explicitly say we want React from 'react' library
 
+import React from 'react'; // without this the browser on index.html will say error: React is not defined
 const App = function() {
 	return <div>Hi</div>;
 }
