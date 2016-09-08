@@ -51,16 +51,22 @@ class App extends Component {
 		this.state = {videos: [],
 				selectedVideo: null
 			};
+
+	    this.videoSearch('surfboards');
+	}
+
+	videoSearch(term){
 		// YTSearch({key: API_KEY, term: 'surfboards'}, data =>{ // the importance of using data instead of function (data)
 		// 	this.setState({ videos: data });
 		// });
 		// when search is complete the state is reset.
 		// does same thing as above with ES6
-		YTSearch({key: API_KEY, term: 'surfboards'}, videos => {
+		YTSearch({key: API_KEY, term: term}, videos => {
 			this.setState({videos: videos,
 							selectedVideo: videos[0]}); // or do this.setState({videos:videos}); the second 'videos' omittable b/c of ES6 and name identity
-		})
-	}
+		}
+	 )
+    } // pay special attention to {} and () or else it'll throw an error ./src/index.js module could not be found
 
 	// pass data from App's videos to VideoList: this is called a prop.
 	// note the necessity of {} without which error is thrown saying that ./src/index.js module could not be found
@@ -75,7 +81,7 @@ class App extends Component {
 		// add a call back to the VideoList item below: so we are now passing a property called onVideoSelect to VideoList. 
 		return (
 			<div>
-			  <SearchBar />
+			  <SearchBar onSearchTermChange = {term =>this.videoSearch(term)}/>
 			  <VideoDetail video = {this.state.selectedVideo}/>
 			  <VideoList 
 			  	onVideoSelect = {selectedVideo =>{this.setState({selectedVideo})}}

@@ -42,13 +42,20 @@ class SearchBar extends Component { // has all functionalities of the React.Comp
 			<div className = 'search-bar'>
 				<input 
 				value = {this.state.term} 
-				onChange = {(newInput) => this.setState({term: newInput.target.value})} />; 
+				// onChange = {(newInput) => this.setState({term: newInput.target.value})} />; 
+				onChange = {(newInput) => this.onInputChange(newInput.target.value)} />; 
 				Value of the input: {this.state.term}
 			</div>
 
 			)
 
-	}	
+	}
+
+	onInputChange (term) {
+		this.setState({term});
+		this.props.onSearchTermChange(term);
+
+	}
 
 
 	// event handler
