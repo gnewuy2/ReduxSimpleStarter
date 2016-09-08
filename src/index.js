@@ -24,6 +24,7 @@
 // Even though we've installed React in the package dependencies
 // we have to explicitly say we want React from 'react' library
 // to render them into DOM requires different library reactDom
+import _ from 'lodash'
 import React, {Component} from 'react'; // without this the browser on index.html will say error: React is not defined
 import ReactDOM from 'react-dom' // without this we get warning: reactDom required
 import YTSearch from 'youtube-api-search'
@@ -79,9 +80,11 @@ class App extends Component {
 		// for it to interact with the state. Also, want the state to come through to the rendering below; so need to modify video_detail.js and constructor in index.js both.
 
 		// add a call back to the VideoList item below: so we are now passing a property called onVideoSelect to VideoList. 
+
+		const videoSearch = _.debounce((term) =>{this.videoSearch(term)}, 300) // debounce takes a new function and returns a new function called only once every 300 milliseconds.
 		return (
 			<div>
-			  <SearchBar onSearchTermChange = {term =>this.videoSearch(term)}/>
+			  <SearchBar onSearchTermChange = {videoSearch}/>
 			  <VideoDetail video = {this.state.selectedVideo}/>
 			  <VideoList 
 			  	onVideoSelect = {selectedVideo =>{this.setState({selectedVideo})}}
